@@ -16,3 +16,9 @@
 #PR Tone
 - For small features or small bug fixes, there is a 12 hour response time limit that should not be delayed, unless communicated otherwsise by the people responsible
 - For larger features or significant bugs, immidiate response is required to resolve the issue ASAP
+
+# Design Improvements
+- Use a shared Figma Board - Koosha
+- Clear Labels (based on passwrod function) - Alper
+- Implement a navigation bar (to help find passwords and accounts) - Syed
+- Get feedback from classmaates - Jamshid
