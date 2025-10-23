@@ -169,7 +169,7 @@ Data/privacy: Since the app is local, unauthorized individuals without
 direct access to your computer will not be able to access your
 passwords.
 
-![](images/signing.png)
+![](images/signin.png)
 ![](images/register.png)
 ![](images/reset.png)
 
