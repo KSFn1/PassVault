@@ -609,15 +609,13 @@ Example issues and milestones created on GitHub.
 
 **PR Checklist (Pull Requests)**
 
-\[ \] Code runs locally with no errors
+### Project & Design Proposal Implementation
 
-\[ \] Comments and variable names are clear
+https://github.com/KSFn1/PassVault/issues/13
 
-\[ \] README and documentation updated
+### Design Proposal Addition #14
 
-\[ \] No console errors or print statements
-
-\[ \] Code has been reviewed by a reviewer
+https://github.com/KSFn1/PassVault/pull/14
 
 # 9) Testing Plan
 
