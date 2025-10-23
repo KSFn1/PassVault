@@ -252,6 +252,37 @@ screen. [(JS)]{.underline}
 
                                                               
   --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## 3.3 User Flows
+
+Attach Figma flow(s) and list success criteria for each flow.
+
+| **Flow** | **Description** | **Success Criteria** |
+|-----------|-----------------|----------------------|
+| **Login** | User enters their registered email and password to gain access to the main page. | The user successfully logs in within 90 seconds using valid credentials and is redirected to the main page. |
+| **Registration** | User creates a new account by entering username, email, and password. | A new user account is created, and the system securely stores credentials using hashing. The user is redirected to the login page. |
+| **Forgot Password** | User requests a password reset, receives a verification code via email, and sets a new password. | The verification email is sent successfully, and the user can log in using the new password afterward. |
+| **Add Information** | From the main page, user clicks “Add”, inputs platform name, username, and password, then saves. | The new credential is encrypted and added to the list instantly without app errors. |
+| **Edit/Delete Information** | User selects “Modify” or “Delete” next to an existing entry. | The credential updates or disappears immediately, with a confirmation message displayed. |
+| **Password Generator** | User clicks “Generate Password” and receives a unique string containing letters, numbers, and symbols. | Each generated password meets the length and complexity requirements and is unique on every generation. |
+| **Logout** | User clicks the “Logout” button. | The session ends securely, returning to the login screen, with no saved state left open. |
+
+---
+
+## 3.4 Accessibility in Design
+
+Color contrast, focus order, labels/errors.
+
+| **Category** | **Implementation Details** |
+|---------------|----------------------------|
+| **Color Contrast** | All text and background combinations meet WCAG AA standards. For example, dark text (`#000000`) on a light background (`#FFFFFF`), and high-contrast action buttons. |
+| **Focus Order** | Logical tab order flows from top to bottom and left to right. |
+| **Labels & Errors** | Every input includes a visible label and placeholder text. Error messages are short, specific, and written in plain language. |
+| **Keyboard Navigation** | All buttons and text fields are reachable using the **Tab** key. |
+| **Font Readability** | Uses the **Inter** font at readable sizes. |
+| **Consistent Layout** | Pages share a predictable header/footer structure to support users with cognitive or visual limitations. |
+| **Feedback States** | Visual and text feedback are provided for all user actions. |
+
 # 4) Information Architecture & Data
 
 4.1 Sitemap / Navigation\
