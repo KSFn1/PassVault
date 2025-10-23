@@ -285,9 +285,9 @@ Color contrast, focus order, labels/errors.
 
 Paste 2–3 key Figma screenshots below (insert images). 
 
-![](images/Figma1.jpg)
-![](images/Figma2.jpg)
-![](images/Figma3.jpg)
+![](images/Figma1.png)
+![](images/Figma2.png)
+![](images/Figma3.png)
 
 # 4) Information Architecture & Data
 
