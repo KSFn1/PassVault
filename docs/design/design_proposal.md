@@ -175,9 +175,9 @@ Provide view-only Figma links and 2--3 exported screenshots per key
 screen. [(JS)]{.underline}
 
 3.1 Figma Links\
-- Design file: https://www.figma.com/file/...\
-- Prototype: https://www.figma.com/proto/...\
-- Design System: https://www.figma.com/file/...
+- Design file: https://www.figma.com/design/psNsHmTIXWHwQsPaF3EgrI/PassVault-Desktop-App-Prototype?m=auto&t=GPuxGUWOk9FRehBb-6
+- Prototype: https://www.figma.com/proto/psNsHmTIXWHwQsPaF3EgrI/PassVault-Desktop-App-Prototype?node-id=64-4&p=f&t=HcOvw5WsVNPWZ5bo-0&scaling=scale-down&content-scaling=fixed&page-id=2%3A8&starting-point-node-id=64%3A4
+- Design System: https://www.figma.com/design/psNsHmTIXWHwQsPaF3EgrI/PassVault-Desktop-App-Prototype?t=GPuxGUWOk9FRehBb-0
 
 3.2 Screen Inventory
 
