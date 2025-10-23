@@ -578,7 +578,7 @@ PR checklist.
 
 **Repository URL:**
 
-<https://github.com/JS-457/JAKS-CSSD-1661-Project.git>
+https://github.com/KSFn1/PassVault.git
 
 **Default Branch:**
 
