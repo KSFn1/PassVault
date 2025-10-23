@@ -686,12 +686,12 @@ We will have clear labels with simple dictionary and added descriptions
 
 # 13) Submission Checklist
 
-\[ \] Figma links (design + prototype)\
-\[ \] Screenshots per key screen\
-\[ \] User stories + acceptance criteria\
-\[ \] Screen inventory & flows\
-\[ \] Style guide & interaction states\
-\[ \] GitHub repo URL and PR/Issue links\
-\[ \] Usability + functional checks\
-\[ \] Accessibility notes\
-\[ \] Risks & timeline
+-[ ] Figma links (design + prototype)\
+-[ ] Screenshots per key screen\
+-[ ] User stories + acceptance criteria\
+-[ ] Screen inventory & flows\
+-[ ] Style guide & interaction states\
+-[ ] GitHub repo URL and PR/Issue links\
+-[ ] Usability + functional checks\
+-[ ] Accessibility notes\
+-[ ] Risks & timeline
