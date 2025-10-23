@@ -252,15 +252,6 @@ screen. [(JS)]{.underline}
 
                                                               
   --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-3.3 User Flows\
-Attach Figma flow(s) and list success criteria for each flow.
-
-3.4 Accessibility in Design\
-Color contrast, focus order, labels/errors.
-
-Paste 2--3 key Figma screenshots below (insert images).
-
 # 4) Information Architecture & Data
 
 4.1 Sitemap / Navigation\
