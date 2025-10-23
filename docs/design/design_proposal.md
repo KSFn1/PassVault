@@ -172,6 +172,9 @@ passwords.
 ![](images/signin.png)
 ![](images/register.png)
 ![](images/reset.png)
+![](images/land.png)
+![](images/contact.png)
+![](images/about.png)
 
 # 3) Figma Design
 
