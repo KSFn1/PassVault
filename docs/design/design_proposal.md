@@ -613,7 +613,7 @@ Project & Design Proposal Implementation
 
 https://github.com/KSFn1/PassVault/issues/13
 
-Design Proposal Addition #14
+Design Proposal Addition
 
 https://github.com/KSFn1/PassVault/pull/14
 
