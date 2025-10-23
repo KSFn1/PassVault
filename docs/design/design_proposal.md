@@ -283,6 +283,12 @@ Color contrast, focus order, labels/errors.
 | **Consistent Layout** | Pages share a predictable header/footer structure to support users with cognitive or visual limitations. |
 | **Feedback States** | Visual and text feedback are provided for all user actions. |
 
+Paste 2–3 key Figma screenshots below (insert images). 
+
+![](images/Figma1.jpg)
+![](images/Figma2.jpg)
+![](images/Figma3.jpg)
+
 # 4) Information Architecture & Data
 
 4.1 Sitemap / Navigation\
