@@ -609,11 +609,11 @@ Example issues and milestones created on GitHub.
 
 **PR Checklist (Pull Requests)**
 
-### Project & Design Proposal Implementation
+Project & Design Proposal Implementation
 
 https://github.com/KSFn1/PassVault/issues/13
 
-### Design Proposal Addition #14
+Design Proposal Addition #14
 
 https://github.com/KSFn1/PassVault/pull/14
 
