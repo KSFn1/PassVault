@@ -288,7 +288,7 @@ Color contrast, focus order, labels/errors.
 4.1 Sitemap / Navigation\
 Draw or link a simple diagram (can be Figma). [(JS)]{.underline}
 
-![]("images/Navigation Diagram.jpg")
+![](images/Navigation.jpg)
 
 4.2 Content / Data Model
 
