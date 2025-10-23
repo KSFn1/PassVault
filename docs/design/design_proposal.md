@@ -288,14 +288,7 @@ Color contrast, focus order, labels/errors.
 4.1 Sitemap / Navigation\
 Draw or link a simple diagram (can be Figma). [(JS)]{.underline}
 
-Login Page
- ├──→ Register Page
- ├──→ Email (Forgot Password)
- │      └──→ Verification
- │             └──→ Reset Password
- └──→ Main Page
-         ├──→ Contact Us
-         └──→ About Us
+![](images/Navigation Diagram.jpg)
 
 4.2 Content / Data Model
 
