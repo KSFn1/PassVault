@@ -36,6 +36,8 @@
             pictureBox2 = new PictureBox();
             label4 = new Label();
             panel3 = new Panel();
+            button2 = new Button();
+            button5 = new Button();
             label6 = new Label();
             textBox4 = new TextBox();
             label7 = new Label();
@@ -117,6 +119,8 @@
             // panel3
             // 
             panel3.BackColor = SystemColors.ActiveBorder;
+            panel3.Controls.Add(button2);
+            panel3.Controls.Add(button5);
             panel3.Controls.Add(label6);
             panel3.Controls.Add(textBox4);
             panel3.Controls.Add(label7);
@@ -134,6 +138,38 @@
             panel3.Size = new Size(541, 334);
             panel3.TabIndex = 5;
             panel3.Paint += panel3_Paint;
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ActiveBorder;
+            button2.Cursor = Cursors.Hand;
+            button2.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button2.ForeColor = Color.DarkOrchid;
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.Location = new Point(400, 203);
+            button2.Name = "button2";
+            button2.Size = new Size(20, 20);
+            button2.TabIndex = 16;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click_1;
+            // 
+            // button5
+            // 
+            button5.BackColor = SystemColors.ActiveBorder;
+            button5.Cursor = Cursors.Hand;
+            button5.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button5.ForeColor = Color.DarkOrchid;
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.Location = new Point(400, 144);
+            button5.Name = "button5";
+            button5.Size = new Size(20, 20);
+            button5.TabIndex = 15;
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // label6
             // 
@@ -153,6 +189,7 @@
             textBox4.PasswordChar = '*';
             textBox4.Size = new Size(258, 23);
             textBox4.TabIndex = 11;
+            textBox4.TextChanged += textBox4_TextChanged;
             // 
             // label7
             // 
@@ -171,6 +208,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(258, 23);
             textBox3.TabIndex = 9;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // button3
             // 
@@ -212,6 +250,7 @@
             textBox2.PasswordChar = '*';
             textBox2.Size = new Size(258, 23);
             textBox2.TabIndex = 3;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label1
             // 
@@ -230,6 +269,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(258, 23);
             textBox1.TabIndex = 1;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button1
             // 
@@ -243,8 +283,9 @@
             button1.Name = "button1";
             button1.Size = new Size(107, 37);
             button1.TabIndex = 0;
-            button1.Text = "Login";
+            button1.Text = "Register";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // Register
             // 
@@ -287,5 +328,7 @@
         private Label label1;
         private TextBox textBox1;
         private Button button1;
+        private Button button2;
+        private Button button5;
     }
 }

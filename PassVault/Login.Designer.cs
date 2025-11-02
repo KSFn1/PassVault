@@ -37,6 +37,7 @@
             pictureBox2 = new PictureBox();
             label4 = new Label();
             panel3 = new Panel();
+            button5 = new Button();
             label6 = new Label();
             button3 = new Button();
             label3 = new Label();
@@ -133,6 +134,7 @@
             // panel3
             // 
             panel3.BackColor = SystemColors.ActiveBorder;
+            panel3.Controls.Add(button5);
             panel3.Controls.Add(label6);
             panel3.Controls.Add(button3);
             panel3.Controls.Add(label3);
@@ -148,6 +150,22 @@
             panel3.Size = new Size(541, 334);
             panel3.TabIndex = 2;
             panel3.Paint += panel3_Paint;
+            // 
+            // button5
+            // 
+            button5.BackColor = SystemColors.ActiveBorder;
+            button5.Cursor = Cursors.Hand;
+            button5.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button5.ForeColor = Color.DarkOrchid;
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.Location = new Point(400, 146);
+            button5.Name = "button5";
+            button5.Size = new Size(20, 20);
+            button5.TabIndex = 16;
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // label6
             // 
@@ -213,6 +231,7 @@
             textBox2.PasswordChar = '*';
             textBox2.Size = new Size(258, 23);
             textBox2.TabIndex = 3;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label1
             // 
@@ -231,6 +250,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(258, 23);
             textBox1.TabIndex = 1;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // Login
             // 
@@ -272,5 +292,6 @@
         private Button button3;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Button button5;
     }
 }
