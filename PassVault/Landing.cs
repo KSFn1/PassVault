@@ -10,18 +10,26 @@ using System.Windows.Forms;
 
 namespace PassVault
 {
-    public partial class Email : Form
+    public partial class Landing : Form
     {
-        public Email()
+        public Landing()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Landing_Load(object sender, EventArgs e)
         {
-            Login newForm = new Login();
-            newForm.Show();
-            this.Hide(); 
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

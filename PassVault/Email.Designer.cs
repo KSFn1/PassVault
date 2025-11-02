@@ -32,20 +32,20 @@
             label5 = new Label();
             panel1 = new Panel();
             panel3 = new Panel();
+            button1 = new Button();
             button2 = new Button();
             label2 = new Label();
             label1 = new Label();
             textBox1 = new TextBox();
             label4 = new Label();
             panel2 = new Panel();
-            pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
-            button1 = new Button();
+            pictureBox2 = new PictureBox();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // label5
@@ -81,6 +81,21 @@
             panel3.Padding = new Padding(0, 0, 0, 10);
             panel3.Size = new Size(280, 149);
             panel3.TabIndex = 3;
+            // 
+            // button1
+            // 
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.DodgerBlue;
+            button1.Location = new Point(14, 109);
+            button1.Name = "button1";
+            button1.Size = new Size(49, 23);
+            button1.TabIndex = 9;
+            button1.Text = "Back";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -145,15 +160,6 @@
             panel2.Size = new Size(395, 45);
             panel2.TabIndex = 4;
             // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(523, 14);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(62, 39);
-            pictureBox2.TabIndex = 10;
-            pictureBox2.TabStop = false;
-            // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
@@ -163,19 +169,14 @@
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
-            // button1
+            // pictureBox2
             // 
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.DodgerBlue;
-            button1.Location = new Point(14, 109);
-            button1.Name = "button1";
-            button1.Size = new Size(49, 23);
-            button1.TabIndex = 9;
-            button1.Text = "Back";
-            button1.UseVisualStyleBackColor = true;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(523, 14);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(62, 39);
+            pictureBox2.TabIndex = 10;
+            pictureBox2.TabStop = false;
             // 
             // Email
             // 
@@ -193,8 +194,8 @@
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
