@@ -19,7 +19,7 @@ namespace PassVault
 {
     public partial class Register : Form
     {
-        private const string ImagePath = @"F:\PassVault\PassVault\PassVault\images";
+        private readonly string ImagePath = Path.Combine(Application.StartupPath, "images");
         public Register()
         {
             InitializeComponent();

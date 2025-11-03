@@ -11,7 +11,8 @@ namespace PassVault
 {
     public partial class Login : Form
     {
-        private const string ImagePath = @"F:\PassVault\PassVault\PassVault\images";
+        private readonly string ImagePath = Path.Combine(Application.StartupPath, "images");
+
         public Login()
         {
             InitializeComponent();

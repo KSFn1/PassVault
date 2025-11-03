@@ -110,6 +110,7 @@
             button2.TabIndex = 6;
             button2.Text = "Send Email";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // label2
             // 
@@ -137,6 +138,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(258, 23);
             textBox1.TabIndex = 1;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label4
             // 
