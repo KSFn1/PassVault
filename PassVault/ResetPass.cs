@@ -16,14 +16,17 @@ namespace PassVault
 {
     public partial class ResetPass : Form
     {
+        //Set the path for the image 
         private readonly string ImagePath = Path.Combine(Application.StartupPath, "images");
         private string userEmail;
         public ResetPass(string email)
         {
             InitializeComponent();
+            //Set the email
             userEmail = email;
         }
 
+        //Obtain the user data
         private class UserRecord
         {
             public string username { get; set; }
@@ -69,6 +72,17 @@ namespace PassVault
             return Encoding.UTF8.GetString(decrypted);
         }
 
+        //Set the criteria for a strong password
+        private static bool IsStrongPassword(string password)
+        {
+            bool hasUpper = password.Any(char.IsUpper);
+            bool hasLower = password.Any(char.IsLower);
+            bool hasDigit = password.Any(char.IsDigit);
+            bool hasSymbol = password.Any(ch => !char.IsLetterOrDigit(ch));
+
+            return hasUpper && hasLower && hasDigit && hasSymbol && password.Length >= 8;
+        }
+
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
@@ -86,6 +100,7 @@ namespace PassVault
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Go back to the login page
             Login newForm = new Login();
             newForm.Show();
             this.Hide();
@@ -93,34 +108,49 @@ namespace PassVault
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //Read the passwords
             string newPassword = textBox1.Text.Trim();
             string confirmPassword = textBox2.Text.Trim();
 
+            //Make sure noth fields are filled out
             if (string.IsNullOrWhiteSpace(newPassword) || string.IsNullOrWhiteSpace(confirmPassword))
             {
                 MessageBox.Show("Please fill in both password fields.");
                 return;
             }
 
+            //Make sure the password matches the criteria
+            if (!IsStrongPassword(newPassword))
+            {
+                MessageBox.Show("Password must include one upper case, one lower case, one symbol, and one number, and is 8 letters long.");
+                return;
+            }
+
+
+            //Make sure both passwords match
             if (newPassword != confirmPassword)
             {
                 MessageBox.Show("Passwords don't match.");
                 return;
             }
 
+            //Set the path for the file
             string path = Path.Combine(Application.StartupPath, "info.txt");
 
+            //Make sure the file exists
             if (!File.Exists(path))
             {
                 MessageBox.Show("No user data found.");
                 return;
             }
 
+            //Read all lines
             string[] lines = File.ReadAllLines(path);
             List<string> updatedLines = new List<string>();
 
             bool userFound = false;
 
+            // Go through each line and decrypt
             foreach (string line in lines)
             {
                 try
@@ -179,6 +209,7 @@ namespace PassVault
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //Change the picture and setting depending on the situation
             if (textBox1.PasswordChar == '*')
             {
                 textBox1.PasswordChar = '\0';
@@ -199,6 +230,7 @@ namespace PassVault
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //Change the picture and setting depending on the situation
             if (textBox1.PasswordChar == '*')
             {
                 textBox1.PasswordChar = '\0';

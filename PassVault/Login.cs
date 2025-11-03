@@ -11,6 +11,7 @@ namespace PassVault
 {
     public partial class Login : Form
     {
+        //Set the path for the image 
         private readonly string ImagePath = Path.Combine(Application.StartupPath, "images");
 
         public Login()
@@ -48,15 +49,20 @@ namespace PassVault
         // Validate login info
         private bool ValidateLogin(String usernameInput, string password)
         {
+
+            //Set the file path
             string path = Path.Combine(Application.StartupPath, "info.txt");
 
+            //Make sure the file exists 
             if (!File.Exists(path))
             {
                 return false;
             }
 
+            //Store all data in a line
             string[] lines = File.ReadAllLines(path);
 
+            //Go through each line and decrypt
             foreach (var line in lines)
             {
                 try
@@ -66,6 +72,7 @@ namespace PassVault
 
                     var user = JsonSerializer.Deserialize<UserRecord>(json);
 
+                    //If the username is found, return the encrypted information
                     if (user.username == usernameInput)
                     {
                         byte[] salt = Convert.FromBase64String(user.Salt);
@@ -86,15 +93,19 @@ namespace PassVault
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //Read the username
             string inputUsername = textBox1.Text.Trim();
+            //Read the password
             string password = textBox2.Text;
 
+            //Make sure neither fields are empty
             if (string.IsNullOrWhiteSpace(inputUsername) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Please fillout both fields");
                 return;
             }
 
+            //If username and password match, proceed
             if (ValidateLogin(inputUsername, password))
             {
 
@@ -132,6 +143,7 @@ namespace PassVault
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // Go to the email page
             Email newForm = new Email();
             newForm.Show();
             this.Hide();
@@ -139,6 +151,7 @@ namespace PassVault
 
         private void button3_Click(object sender, EventArgs e)
         {
+            // Go to the register page
             Register newForm = new Register();
             newForm.Show();
             this.Hide();
@@ -156,6 +169,7 @@ namespace PassVault
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //If the button is pressed switch the image and settings depending on the situation
             if (textBox2.PasswordChar == '*')
             {
                 textBox2.PasswordChar = '\0';

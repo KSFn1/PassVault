@@ -24,6 +24,7 @@ namespace PassVault
             InitializeComponent();
         }
 
+        //Retrieve all the data
         private class UserRecord
         {
             public string username { get; set; }
@@ -44,12 +45,17 @@ namespace PassVault
         //Check if email exists in the file
         private bool EmailExists(string email)
         {
+            //Set the path for the file
             string path = Path.Combine(Application.StartupPath, "info.txt");
+
+            // Make sure the path exists
             if (!File.Exists(path))
                 return false;
 
+            //Read all lines into an array
             string[] lines = File.ReadAllLines(path);
 
+            //Go through each line and decrypt each line
             foreach (string line in lines)
             {
                 try
@@ -58,6 +64,7 @@ namespace PassVault
                     string json = DecryptData(encryptedBytes);
                     var user = JsonSerializer.Deserialize<UserRecord>(json);
 
+                    //If the emails match, return
                     if (user.Email == email)
                         return true;
                 }
@@ -82,19 +89,30 @@ namespace PassVault
             }
         }
 
+        //Create a method to send the email
         private void SendEmail(string recipientEmail, string code)
         {
             try
             {
+                //Declare the sender email
                 string senderEmail = "passvaultms@gmail.com";
+                //Provide the password
                 string senderPassword = "jqww mebj igzf mnkw";
 
+                //Create a new message
                 MailMessage message = new MailMessage();
+
+                //Compose the email
                 message.From = new MailAddress(senderEmail, "PassVault");
                 message.To.Add(recipientEmail);
+
+                //Add the subject line
                 message.Subject = "Your PassVault Code";
+
+                //Add the body
                 message.Body = $"Your password reset verification code is: {code}\n\nIf you did not request this, please ignore this email.";
 
+                //Declare the port and send
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                 smtp.Credentials = new NetworkCredential(senderEmail, senderPassword);
                 smtp.EnableSsl = true;
@@ -104,6 +122,7 @@ namespace PassVault
 
             }
 
+            //Catch an error if any came up
             catch (Exception ex)
             {
                 MessageBox.Show("Error sending email: " + ex.Message); 
@@ -112,6 +131,7 @@ namespace PassVault
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //Go back to the login page
             Login newForm = new Login();
             newForm.Show();
             this.Hide();
@@ -124,23 +144,28 @@ namespace PassVault
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //Read the email
             string email = textBox1.Text.Trim(); 
 
+            //Make sure the field is not empty
             if (string.IsNullOrWhiteSpace(email))
             {
                 MessageBox.Show("Please enter your email");
                 return; 
             }
 
+            //Make sure the email exists in the system
             if (!EmailExists(email))
             {
                 MessageBox.Show("This email is not registered in the system");
                 return;
             }
 
+            //Store the verification code
             verificationCode = GenerateCode();
             SendEmail(email, verificationCode);
 
+            //Move to the varify page
             Varify newForm = new Varify(email, verificationCode);
             newForm.Show();
             this.Hide(); 
