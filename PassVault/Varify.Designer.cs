@@ -95,6 +95,7 @@
             button1.TabIndex = 9;
             button1.Text = "CANCEL";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -109,6 +110,7 @@
             button2.TabIndex = 6;
             button2.Text = "VARIFY";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // label2
             // 
@@ -125,9 +127,9 @@
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label1.Location = new Point(6, 46);
             label1.Name = "label1";
-            label1.Size = new Size(203, 15);
+            label1.Size = new Size(127, 15);
             label1.TabIndex = 2;
-            label1.Text = "Varification code sent to your email";
+            label1.Text = "Enter the 6 digit code";
             label1.Click += label1_Click;
             // 
             // textBox1
@@ -137,6 +139,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(258, 23);
             textBox1.TabIndex = 1;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label4
             // 

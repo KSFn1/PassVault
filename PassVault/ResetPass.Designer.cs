@@ -40,6 +40,8 @@
             pictureBox2 = new PictureBox();
             label4 = new Label();
             panel3 = new Panel();
+            button3 = new Button();
+            button5 = new Button();
             button1 = new Button();
             button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -97,6 +99,7 @@
             textBox2.PasswordChar = '*';
             textBox2.Size = new Size(258, 23);
             textBox2.TabIndex = 3;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label1
             // 
@@ -113,8 +116,10 @@
             textBox1.Cursor = Cursors.IBeam;
             textBox1.Location = new Point(136, 82);
             textBox1.Name = "textBox1";
+            textBox1.PasswordChar = '*';
             textBox1.Size = new Size(258, 23);
             textBox1.TabIndex = 1;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // panel2
             // 
@@ -149,6 +154,8 @@
             // panel3
             // 
             panel3.BackColor = SystemColors.ActiveBorder;
+            panel3.Controls.Add(button3);
+            panel3.Controls.Add(button5);
             panel3.Controls.Add(button1);
             panel3.Controls.Add(button2);
             panel3.Controls.Add(label2);
@@ -161,6 +168,38 @@
             panel3.Size = new Size(541, 334);
             panel3.TabIndex = 5;
             panel3.Paint += panel3_Paint;
+            // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.ActiveBorder;
+            button3.Cursor = Cursors.Hand;
+            button3.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button3.ForeColor = Color.DarkOrchid;
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.Location = new Point(403, 143);
+            button3.Name = "button3";
+            button3.Size = new Size(20, 20);
+            button3.TabIndex = 18;
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
+            // button5
+            // 
+            button5.BackColor = SystemColors.ActiveBorder;
+            button5.Cursor = Cursors.Hand;
+            button5.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button5.ForeColor = Color.DarkOrchid;
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.Location = new Point(403, 84);
+            button5.Name = "button5";
+            button5.Size = new Size(20, 20);
+            button5.TabIndex = 17;
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // button1
             // 
@@ -175,6 +214,7 @@
             button1.TabIndex = 11;
             button1.Text = "CANCEL";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -189,6 +229,7 @@
             button2.TabIndex = 10;
             button2.Text = "RESET";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // ResetPass
             // 
@@ -226,5 +267,7 @@
         private Panel panel3;
         private Button button1;
         private Button button2;
+        private Button button3;
+        private Button button5;
     }
 }

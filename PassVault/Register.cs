@@ -19,10 +19,41 @@ namespace PassVault
 {
     public partial class Register : Form
     {
-        private const string ImagePath = @"F:\PassVault\PassVault\PassVault\images";
+        //Set the path for the image 
+        private readonly string ImagePath = Path.Combine(Application.StartupPath, "images");
         public Register()
         {
             InitializeComponent();
+        }
+
+        //Obtain the user data
+        private class UserRecord
+        {
+            public string username { get; set; }
+            public string Email { get; set; }
+            public string Salt { get; set;  }
+            public string Hash { get; set;  }
+            public int Iterations { get; set; }
+
+            public DateTime CreatedAt { get; set; }
+        }
+
+        //Decrypt the data
+        private static string DecryptData(byte[] encryptedData)
+        {
+            byte[] decrypted = ProtectedData.Unprotect(encryptedData, null, DataProtectionScope.CurrentUser);
+            return Encoding.UTF8.GetString(decrypted);
+        }
+
+        // Make sure the inputted password matches the criteria
+        private static bool IsStrongPassword(string password)
+        {
+            bool hasUpper = password.Any(char.IsUpper);
+            bool hasLower = password.Any(char.IsLower);
+            bool hasDigit = password.Any(char.IsDigit);
+            bool hasSymbol = password.Any(ch => !char.IsLetterOrDigit(ch));
+
+            return hasUpper && hasLower && hasDigit && hasSymbol && password.Length >= 8;
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -30,6 +61,7 @@ namespace PassVault
 
         }
 
+        //Encrypt the data
         private static byte[] GenerateSalt(int size = 16)
         {
             byte[] salt = new byte[size];
@@ -67,6 +99,7 @@ namespace PassVault
             }
         }
 
+        //Method to clear all fields once called
         private void ClearFields()
         {
             textBox1.Text = "";
@@ -77,6 +110,7 @@ namespace PassVault
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //Go back to the login page
             Login newForm = new Login();
             newForm.Show();
             this.Hide();
@@ -90,7 +124,7 @@ namespace PassVault
             string password = textBox2.Text;
             string conPass = textBox4.Text;
 
-
+            //Make sure all fields are filled out
             if (string.IsNullOrWhiteSpace(username) ||
                 string.IsNullOrWhiteSpace(email) ||
                 string.IsNullOrWhiteSpace(password) ||
@@ -112,6 +146,50 @@ namespace PassVault
             {
                 MessageBox.Show("Invalid email format");
                 return;
+            }
+
+            //Make sure the password is strong
+            if (!IsStrongPassword(password))
+            {
+                MessageBox.Show("Password must include one upper case, one lower case, one symbol, and one number, and is 8 letters long.");
+                return;
+            }
+
+            // Check for duplicate email or username
+            string path = Path.Combine(Application.StartupPath, "info.txt");
+            if (File.Exists(path))
+            {
+
+                //Read all lines
+                string[] lines = File.ReadAllLines(path);
+
+                //Go through each line and decrypt
+                foreach (string line in lines)
+                {
+                    try
+                    {
+                        byte[] encryptedBytes = Convert.FromBase64String(line);
+                        string decryptedJson = DecryptData(encryptedBytes);
+                        var user = JsonSerializer.Deserialize<UserRecord>(decryptedJson);
+
+                        //Notify if username/email is already in use
+                        if (user.Email.Equals(email, StringComparison.OrdinalIgnoreCase))
+                        {
+                            MessageBox.Show("This email is already registered.");
+                            return;
+                        }
+
+                        if (user.username.Equals(username, StringComparison.OrdinalIgnoreCase))
+                        {
+                            MessageBox.Show("This username is already taken.");
+                            return;
+                        }
+                    }
+                    catch
+                    {
+                        continue; // Skip invalid lines
+                    }
+                }
             }
 
             // Encrypte the information
@@ -142,7 +220,6 @@ namespace PassVault
             string encryptedBase64 = Convert.ToBase64String(encrypted);
 
             // Save to file
-            string path = Path.Combine(Application.StartupPath, "info.txt");
             File.AppendAllText(path, encryptedBase64 + Environment.NewLine);
 
             MessageBox.Show("Registration complete!");
@@ -173,13 +250,10 @@ namespace PassVault
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button5_Click(object sender, EventArgs e)
         {
+
+            //Switch the image and settings depending on the situation
             if (textBox2.PasswordChar == '*')
             {
                 textBox2.PasswordChar = '\0';
@@ -206,6 +280,7 @@ namespace PassVault
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            //Switch the image and settings depending on the situation
             if (textBox2.PasswordChar == '*')
             {
                 textBox2.PasswordChar = '\0';

@@ -155,7 +155,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1006);
+            ClientSize = new Size(1540, 1005);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Name = "Landing";
