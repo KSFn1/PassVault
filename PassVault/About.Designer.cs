@@ -175,11 +175,12 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Anchor = AnchorStyles.Top;
+            pictureBox1.Dock = DockStyle.Bottom;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(377, 483);
+            pictureBox1.Location = new Point(0, 522);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(800, 418);
+            pictureBox1.Size = new Size(1504, 418);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 

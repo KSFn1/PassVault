@@ -43,7 +43,6 @@
             textBox2 = new TextBox();
             label3 = new Label();
             textBox3 = new TextBox();
-            button1 = new Button();
             button5 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -160,7 +159,7 @@
             textBox1.Location = new Point(797, 213);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(414, 23);
-            textBox1.TabIndex = 7;
+            textBox1.TabIndex = 0;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
@@ -191,7 +190,7 @@
             textBox2.Location = new Point(797, 274);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(414, 23);
-            textBox2.TabIndex = 9;
+            textBox2.TabIndex = 1;
             // 
             // label3
             // 
@@ -211,17 +210,8 @@
             textBox3.Multiline = true;
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(414, 300);
-            textBox3.TabIndex = 11;
+            textBox3.TabIndex = 2;
             textBox3.TextChanged += textBox3_TextChanged;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(1557, 166);
-            button1.Name = "button1";
-            button1.Size = new Size(8, 8);
-            button1.TabIndex = 13;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
@@ -235,7 +225,7 @@
             button5.Location = new Point(936, 688);
             button5.Name = "button5";
             button5.Size = new Size(112, 40);
-            button5.TabIndex = 13;
+            button5.TabIndex = 3;
             button5.Text = "SUBMIT";
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
@@ -248,7 +238,6 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(1904, 1011);
             Controls.Add(button5);
-            Controls.Add(button1);
             Controls.Add(label3);
             Controls.Add(textBox3);
             Controls.Add(label2);
@@ -287,7 +276,6 @@
         private TextBox textBox2;
         private Label label3;
         private TextBox textBox3;
-        private Button button1;
         private Button button5;
     }
 }

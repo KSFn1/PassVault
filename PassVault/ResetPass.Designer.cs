@@ -98,7 +98,7 @@
             textBox2.Name = "textBox2";
             textBox2.PasswordChar = '*';
             textBox2.Size = new Size(258, 23);
-            textBox2.TabIndex = 3;
+            textBox2.TabIndex = 2;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label1
@@ -118,7 +118,7 @@
             textBox1.Name = "textBox1";
             textBox1.PasswordChar = '*';
             textBox1.Size = new Size(258, 23);
-            textBox1.TabIndex = 1;
+            textBox1.TabIndex = 0;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // panel2
@@ -197,7 +197,7 @@
             button5.Location = new Point(403, 84);
             button5.Name = "button5";
             button5.Size = new Size(20, 20);
-            button5.TabIndex = 17;
+            button5.TabIndex = 1;
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
@@ -211,7 +211,7 @@
             button1.Location = new Point(120, 273);
             button1.Name = "button1";
             button1.Size = new Size(108, 29);
-            button1.TabIndex = 11;
+            button1.TabIndex = 4;
             button1.Text = "CANCEL";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -226,7 +226,7 @@
             button2.Location = new Point(348, 264);
             button2.Name = "button2";
             button2.Size = new Size(75, 47);
-            button2.TabIndex = 10;
+            button2.TabIndex = 3;
             button2.Text = "RESET";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
