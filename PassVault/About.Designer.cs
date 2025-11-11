@@ -1,6 +1,6 @@
 ﻿namespace PassVault
 {
-    partial class Landing
+    partial class About
     {
         /// <summary>
         /// Required designer variable.
@@ -28,56 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Landing));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             panel1 = new Panel();
-            label1 = new Label();
-            textBox1 = new TextBox();
             button4 = new Button();
             button3 = new Button();
-            button1 = new Button();
             button2 = new Button();
             label5 = new Label();
-            label4 = new Label();
             panel2 = new Panel();
             pictureBox2 = new PictureBox();
+            label4 = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.Indigo;
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(textBox1);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button3);
-            panel1.Controls.Add(button1);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(label5);
-            panel1.Location = new Point(0, 0);
+            panel1.Location = new Point(-8, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1920, 134);
-            panel1.TabIndex = 3;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(781, 75);
-            label1.Name = "label1";
-            label1.Size = new Size(60, 17);
-            label1.TabIndex = 14;
-            label1.Text = "Search...";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(781, 93);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(377, 23);
-            textBox1.TabIndex = 13;
-            textBox1.TextChanged += textBox1_TextChanged;
+            panel1.Size = new Size(1936, 90);
+            panel1.TabIndex = 7;
             // 
             // button4
             // 
@@ -90,7 +69,7 @@
             button4.Size = new Size(132, 90);
             button4.TabIndex = 5;
             button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            button4.Click += button4_Click_1;
             // 
             // button3
             // 
@@ -108,21 +87,6 @@
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
-            // button1
-            // 
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.Transparent;
-            button1.Location = new Point(1599, 43);
-            button1.Name = "button1";
-            button1.Size = new Size(121, 40);
-            button1.TabIndex = 11;
-            button1.Text = "Contact Us";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // button2
             // 
             button2.Cursor = Cursors.Hand;
@@ -130,45 +94,34 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.Transparent;
-            button2.Location = new Point(1460, 43);
+            button2.Location = new Point(1598, 43);
             button2.Name = "button2";
-            button2.Size = new Size(112, 40);
+            button2.Size = new Size(128, 40);
             button2.TabIndex = 10;
-            button2.Text = "About US";
+            button2.Text = "Contact US";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click_1;
+            button2.Click += button2_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Franklin Gothic Heavy", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(841, 18);
+            label5.Location = new Point(831, 18);
             label5.Name = "label5";
-            label5.Size = new Size(255, 61);
+            label5.Size = new Size(248, 61);
             label5.TabIndex = 8;
-            label5.Text = "WELCOME";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(911, 29);
-            label4.Name = "label4";
-            label4.Size = new Size(109, 15);
-            label4.TabIndex = 7;
-            label4.Text = "©JAKS CSSD 1161";
+            label5.Text = "ABOUT US";
             // 
             // panel2
             // 
             panel2.BackColor = Color.Black;
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label4);
-            panel2.Location = new Point(0, 940);
+            panel2.Location = new Point(-8, 940);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1920, 71);
-            panel2.TabIndex = 4;
+            panel2.Size = new Size(1936, 71);
+            panel2.TabIndex = 8;
             // 
             // pictureBox2
             // 
@@ -179,36 +132,82 @@
             pictureBox2.TabIndex = 10;
             pictureBox2.TabStop = false;
             // 
-            // Landing
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(919, 29);
+            label4.Name = "label4";
+            label4.Size = new Size(109, 15);
+            label4.TabIndex = 7;
+            label4.Text = "©JAKS CSSD 1161";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(422, 200);
+            label1.Name = "label1";
+            label1.Size = new Size(1057, 250);
+            label1.TabIndex = 9;
+            label1.Text = resources.GetString("label1.Text");
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(839, 144);
+            label2.Name = "label2";
+            label2.Size = new Size(202, 40);
+            label2.TabIndex = 10;
+            label2.Text = "Who Are We?";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(562, 483);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(800, 418);
+            pictureBox1.TabIndex = 11;
+            pictureBox1.TabStop = false;
+            // 
+            // About
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1011);
+            Controls.Add(pictureBox1);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Name = "Landing";
-            Text = "Form1";
-            Load += Landing_Load;
+            Name = "About";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "About";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Panel panel1;
+        private Button button4;
+        private Button button3;
+        private Button button2;
         private Label label5;
-        private Label label4;
         private Panel panel2;
         private PictureBox pictureBox2;
-        private Button button3;
-        private Button button1;
-        private Button button2;
-        private Button button4;
-        private TextBox textBox1;
+        private Label label4;
         private Label label1;
+        private Label label2;
+        private PictureBox pictureBox1;
     }
 }

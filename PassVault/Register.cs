@@ -225,6 +225,12 @@ namespace PassVault
             MessageBox.Show("Registration complete!");
             ClearFields();
 
+            //Reset the inputted information
+            username = null;
+            email = null;
+            password = null;
+            conPass = null;
+
             Login newForm = new Login();
             newForm.Show();
             this.Hide();
