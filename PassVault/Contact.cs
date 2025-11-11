@@ -1,24 +1,33 @@
 ﻿using System;
-using System.IO;
-using System.Net;
-using System.Net.Mail;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PassVault
 {
     public partial class Contact : Form
     {
-        public Contact()
+        //Declare fields
+        private string currentUser;
+
+        //Create constructore
+        public Contact(string username)
         {
             InitializeComponent();
+            //Set the window size to maximum
             this.WindowState = FormWindowState.Maximized;
+
+            //Carry the username over
+            currentUser = username;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -29,6 +38,7 @@ namespace PassVault
             //If yes, quit
             if (result == DialogResult.Yes)
             {
+                currentUser = null; 
                 // Closes the whole app
                 Application.Exit();
             }
@@ -41,7 +51,7 @@ namespace PassVault
         private void button4_Click(object sender, EventArgs e)
         {
             //Switch back to the landiwng page
-            Landing newForm = new Landing();
+            Landing newForm = new Landing(currentUser);
             newForm.Show();
             this.Hide();
         }
@@ -87,7 +97,7 @@ namespace PassVault
                 textBox1.Text = textBox2.Text = textBox3.Text = null;
 
                 //Return to the landing page
-                Landing newForm = new Landing();
+                Landing newForm = new Landing(currentUser);
                 newForm.Show();
                 this.Hide();
 
@@ -158,7 +168,8 @@ namespace PassVault
 
         private void button2_Click(object sender, EventArgs e)
         {
-            About newForm = new About();
+            //Switch to the about us page
+            About newForm = new About(currentUser);
             newForm.Show();
             this.Hide();
         }

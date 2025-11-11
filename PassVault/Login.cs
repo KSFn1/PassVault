@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Windows.Forms;
 
 
+
 namespace PassVault
 {
     public partial class Login : Form
@@ -47,78 +48,51 @@ namespace PassVault
         }
 
         // Validate login info
-        private bool ValidateLogin(String usernameInput, string password)
+        private async Task<bool> ValidateLogin(string usernameInput, string password)
         {
 
-            //Set the file path
-            string path = Path.Combine(Application.StartupPath, "info.txt");
+            //Read info from the databass
+            var users = await FirebaseHelper.GetAllUsersAsync();
 
-            //Make sure the file exists 
-            if (!File.Exists(path))
-            {
-                return false;
-            }
-
-            //Store all data in a line
-            string[] lines = File.ReadAllLines(path);
-
-            //Go through each line and decrypt
-            foreach (var line in lines)
+            foreach (var kv in users)
             {
                 try
                 {
-                    byte[] encryptedBytes = Convert.FromBase64String(line);
-                    string json = DecryptData(encryptedBytes);
-
+                    //Decrypt the data
+                    string json = DecryptData(Convert.FromBase64String(kv.Value));
                     var user = JsonSerializer.Deserialize<UserRecord>(json);
-
-                    //If the username is found, return the encrypted information
                     if (user.username == usernameInput)
                     {
                         byte[] salt = Convert.FromBase64String(user.Salt);
                         byte[] hash = HashPassword(password, salt, user.Iterations);
-
-                        string hashBase64 = Convert.ToBase64String(hash);
-
-                        return hashBase64 == user.Hash;
+                        return Convert.ToBase64String(hash) == user.Hash;
                     }
                 }
-                catch
-                {
-                    continue;
-                }
+                catch { continue; }
             }
             return false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            //Read the username
+            //Store the username and password into variables
             string inputUsername = textBox1.Text.Trim();
-            //Read the password
             string password = textBox2.Text;
 
-            //Make sure neither fields are empty
+            //Make sure textfields are not empty
             if (string.IsNullOrWhiteSpace(inputUsername) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Please fillout both fields");
+                MessageBox.Show("Please fill out both fields.");
                 return;
             }
 
-            //If username and password match, proceed
-            if (ValidateLogin(inputUsername, password))
+            // Return to the login page
+            if (await ValidateLogin(inputUsername, password))
             {
-
-                //Reset the username and password
-                inputUsername = null;
-                password = null; 
-
-                //Switch to the landing page
-                Landing newForm = new Landing();
-                newForm.Show();
+                Landing landingForm = new Landing(inputUsername);
+                landingForm.Show();
                 this.Hide();
             }
-
             else
             {
                 MessageBox.Show("Invalid username or password.");
@@ -182,12 +156,17 @@ namespace PassVault
             }
             else
             {
-                textBox2.PasswordChar = '*'; 
+                textBox2.PasswordChar = '*';
 
                 button5.Image = Image.FromFile(Path.Combine(ImagePath, "passwordeyeopen.png"));
             }
 
 
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
         }
     }

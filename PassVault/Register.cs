@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.VisualBasic;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
 
 namespace PassVault
 {
@@ -103,8 +105,8 @@ namespace PassVault
         private void ClearFields()
         {
             textBox1.Text = "";
-            textBox2.Text = "";
             textBox3.Text = "";
+            textBox2.Text = "";
             textBox4.Text = "";
         }
 
@@ -116,123 +118,87 @@ namespace PassVault
             this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             // Store the information in variables
-            string username = textBox1.Text.Trim();
-            string email = textBox3.Text.Trim();
-            string password = textBox2.Text;
+            string username = textBox2.Text.Trim();
+            string email = textBox1.Text.Trim();
+            string password = textBox3.Text;
             string conPass = textBox4.Text;
 
-            //Make sure all fields are filled out
-            if (string.IsNullOrWhiteSpace(username) ||
-                string.IsNullOrWhiteSpace(email) ||
-                string.IsNullOrWhiteSpace(password) ||
-                string.IsNullOrWhiteSpace(conPass))
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) ||
+                string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(conPass))
             {
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
 
-            // Make sure the passwords match
             if (password != conPass)
             {
-                MessageBox.Show("The inputted passwords don't match");
+                MessageBox.Show("Passwords do not match.");
                 return;
             }
 
-            // Make sure the email is in the right format
             if (!IsValidEmail(email))
             {
-                MessageBox.Show("Invalid email format");
+                MessageBox.Show("Invalid email format.");
                 return;
             }
 
-            //Make sure the password is strong
             if (!IsStrongPassword(password))
             {
-                MessageBox.Show("Password must include one upper case, one lower case, one symbol, and one number, and is 8 letters long.");
+                MessageBox.Show("Password must include one uppercase, one lowercase, one symbol, one number, and be at least 8 characters.");
                 return;
             }
 
-            // Check for duplicate email or username
-            string path = Path.Combine(Application.StartupPath, "info.txt");
-            if (File.Exists(path))
+            // Check duplicates using Firebase
+            var allUsers = await FirebaseHelper.GetAllUsersAsync();
+            foreach (var kv in allUsers)
             {
-
-                //Read all lines
-                string[] lines = File.ReadAllLines(path);
-
-                //Go through each line and decrypt
-                foreach (string line in lines)
+                try
                 {
-                    try
+                    string json = DecryptData(Convert.FromBase64String(kv.Value));
+                    var user = JsonSerializer.Deserialize<UserRecord>(json);
+                    if (user.Email.Equals(email, StringComparison.OrdinalIgnoreCase))
                     {
-                        byte[] encryptedBytes = Convert.FromBase64String(line);
-                        string decryptedJson = DecryptData(encryptedBytes);
-                        var user = JsonSerializer.Deserialize<UserRecord>(decryptedJson);
-
-                        //Notify if username/email is already in use
-                        if (user.Email.Equals(email, StringComparison.OrdinalIgnoreCase))
-                        {
-                            MessageBox.Show("This email is already registered.");
-                            return;
-                        }
-
-                        if (user.username.Equals(username, StringComparison.OrdinalIgnoreCase))
-                        {
-                            MessageBox.Show("This username is already taken.");
-                            return;
-                        }
+                        MessageBox.Show("This email is already registered.");
+                        return;
                     }
-                    catch
+                    if (user.username.Equals(username, StringComparison.OrdinalIgnoreCase))
                     {
-                        continue; // Skip invalid lines
+                        MessageBox.Show("This username is already taken.");
+                        return;
                     }
                 }
+                catch { continue; }
             }
 
-            // Encrypte the information
+            //Generate hash and salt
             byte[] salt = GenerateSalt();
             byte[] hash = HashPassword(password, salt, 100000);
 
-            string saltBase64 = Convert.ToBase64String(salt);
-            string hashBase64 = Convert.ToBase64String(hash);
-
-            // Create an object to store
-            var userRecord = new
+            //Encrypt infromation
+            var userRecord = new UserRecord
             {
                 username = username,
                 Email = email,
-                Salt = saltBase64,
-                Hash = hashBase64,
+                Salt = Convert.ToBase64String(salt),
+                Hash = Convert.ToBase64String(hash),
                 Iterations = 100000,
                 CreatedAt = DateTime.Now
             };
 
-            // Serialize and encrypte before saving
-            string json = JsonSerializer.Serialize(userRecord);
+            string encryptedBase64 = Convert.ToBase64String(ProtectData(JsonSerializer.Serialize(userRecord)));
 
-            //Encrypte with windows DPAPI
-            byte[] encrypted = ProtectData(json);
-
-            //Convert to Base64
-            string encryptedBase64 = Convert.ToBase64String(encrypted);
-
-            // Save to file
-            File.AppendAllText(path, encryptedBase64 + Environment.NewLine);
+            // Save to Firebase
+            await FirebaseHelper.SaveUserAsync(username, encryptedBase64);
+            await FirebaseHelper.SaveUserCredentialsAsync(username, new System.Collections.Generic.List<string>());
 
             MessageBox.Show("Registration complete!");
             ClearFields();
 
-            //Reset the inputted information
-            username = null;
-            email = null;
-            password = null;
-            conPass = null;
-
-            Login newForm = new Login();
-            newForm.Show();
+            Login loginForm = new Login();
+            loginForm.Show();
             this.Hide();
         }
 
@@ -260,9 +226,9 @@ namespace PassVault
         {
 
             //Switch the image and settings depending on the situation
-            if (textBox2.PasswordChar == '*')
+            if (textBox3.PasswordChar == '*')
             {
-                textBox2.PasswordChar = '\0';
+                textBox3.PasswordChar = '\0';
                 textBox4.PasswordChar = '\0';
 
                 button5.Image = Image.FromFile(Path.Combine(ImagePath, "passwordeyeclosed.png"));
@@ -270,7 +236,7 @@ namespace PassVault
             }
             else
             {
-                textBox2.PasswordChar = '*';
+                textBox3.PasswordChar = '*';
                 textBox4.PasswordChar = '*';
 
                 button5.Image = Image.FromFile(Path.Combine(ImagePath, "passwordeyeopen.png"));
@@ -287,9 +253,9 @@ namespace PassVault
         private void button2_Click_1(object sender, EventArgs e)
         {
             //Switch the image and settings depending on the situation
-            if (textBox2.PasswordChar == '*')
+            if (textBox3.PasswordChar == '*')
             {
-                textBox2.PasswordChar = '\0';
+                textBox3.PasswordChar = '\0';
                 textBox4.PasswordChar = '\0';
 
                 button5.Image = Image.FromFile(Path.Combine(ImagePath, "passwordeyeclosed.png"));
@@ -297,7 +263,7 @@ namespace PassVault
             }
             else
             {
-                textBox2.PasswordChar = '*';
+                textBox3.PasswordChar = '*';
                 textBox4.PasswordChar = '*';
 
                 button5.Image = Image.FromFile(Path.Combine(ImagePath, "passwordeyeopen.png"));

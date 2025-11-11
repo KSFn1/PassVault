@@ -42,7 +42,7 @@
             textBox4 = new TextBox();
             label7 = new Label();
             textBox3 = new TextBox();
-            button3 = new Button();
+            back = new Button();
             label3 = new Label();
             label2 = new Label();
             textBox2 = new TextBox();
@@ -125,7 +125,7 @@
             panel3.Controls.Add(textBox4);
             panel3.Controls.Add(label7);
             panel3.Controls.Add(textBox3);
-            panel3.Controls.Add(button3);
+            panel3.Controls.Add(back);
             panel3.Controls.Add(label3);
             panel3.Controls.Add(label2);
             panel3.Controls.Add(textBox2);
@@ -204,25 +204,26 @@
             // textBox3
             // 
             textBox3.Cursor = Cursors.IBeam;
-            textBox3.Location = new Point(136, 24);
+            textBox3.Location = new Point(136, 143);
             textBox3.Name = "textBox3";
+            textBox3.PasswordChar = '*';
             textBox3.Size = new Size(258, 23);
             textBox3.TabIndex = 9;
             textBox3.TextChanged += textBox3_TextChanged;
             // 
-            // button3
+            // back
             // 
-            button3.Cursor = Cursors.Hand;
-            button3.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = Color.DodgerBlue;
-            button3.Location = new Point(237, 292);
-            button3.Name = "button3";
-            button3.Size = new Size(49, 23);
-            button3.TabIndex = 8;
-            button3.Text = "Back";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            back.Cursor = Cursors.Hand;
+            back.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
+            back.FlatStyle = FlatStyle.Flat;
+            back.ForeColor = Color.DodgerBlue;
+            back.Location = new Point(237, 292);
+            back.Name = "back";
+            back.Size = new Size(49, 23);
+            back.TabIndex = 8;
+            back.Text = "Back";
+            back.UseVisualStyleBackColor = true;
+            back.Click += button3_Click;
             // 
             // label3
             // 
@@ -245,9 +246,8 @@
             // textBox2
             // 
             textBox2.Cursor = Cursors.IBeam;
-            textBox2.Location = new Point(136, 143);
+            textBox2.Location = new Point(136, 82);
             textBox2.Name = "textBox2";
-            textBox2.PasswordChar = '*';
             textBox2.Size = new Size(258, 23);
             textBox2.TabIndex = 3;
             textBox2.TextChanged += textBox2_TextChanged;
@@ -265,7 +265,7 @@
             // textBox1
             // 
             textBox1.Cursor = Cursors.IBeam;
-            textBox1.Location = new Point(136, 82);
+            textBox1.Location = new Point(136, 24);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(258, 23);
             textBox1.TabIndex = 1;
@@ -321,7 +321,7 @@
         private TextBox textBox4;
         private Label label7;
         private TextBox textBox3;
-        private Button button3;
+        private Button back;
         private Label label3;
         private Label label2;
         private TextBox textBox2;
