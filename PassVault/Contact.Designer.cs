@@ -246,6 +246,7 @@
             Controls.Add(textBox1);
             Controls.Add(panel1);
             Controls.Add(panel2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Contact";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Contact";

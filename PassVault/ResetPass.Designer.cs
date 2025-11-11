@@ -239,6 +239,7 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             Controls.Add(panel3);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ResetPass";
             Text = "ResetPass";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

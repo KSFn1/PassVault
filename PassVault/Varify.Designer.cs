@@ -189,6 +189,7 @@
             Controls.Add(panel1);
             Controls.Add(panel3);
             Controls.Add(panel2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Varify";
             Text = "Varify";
             panel1.ResumeLayout(false);

@@ -239,6 +239,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = Color.SeaShell;
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
@@ -258,6 +259,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
             Controls.Add(panel2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Landing";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Landing";
