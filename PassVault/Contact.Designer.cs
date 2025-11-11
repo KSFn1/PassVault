@@ -57,9 +57,10 @@
             panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(label5);
-            panel1.Location = new Point(-8, 0);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1935, 90);
+            panel1.Size = new Size(1904, 90);
             panel1.TabIndex = 5;
             // 
             // button4
@@ -77,6 +78,7 @@
             // 
             // button3
             // 
+            button3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button3.BackColor = Color.Crimson;
             button3.Cursor = Cursors.Hand;
             button3.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
@@ -93,6 +95,7 @@
             // 
             // button2
             // 
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button2.Cursor = Cursors.Hand;
             button2.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
             button2.FlatStyle = FlatStyle.Flat;
@@ -108,6 +111,7 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Top;
             label5.AutoSize = true;
             label5.Font = new Font("Franklin Gothic Heavy", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
@@ -122,13 +126,15 @@
             panel2.BackColor = Color.Black;
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label4);
-            panel2.Location = new Point(-8, 940);
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(0, 940);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1935, 71);
+            panel2.Size = new Size(1904, 71);
             panel2.TabIndex = 6;
             // 
             // pictureBox2
             // 
+            pictureBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(1802, 18);
             pictureBox2.Name = "pictureBox2";
@@ -138,10 +144,11 @@
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Bottom;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(919, 29);
+            label4.Location = new Point(950, 29);
             label4.Name = "label4";
             label4.Size = new Size(109, 15);
             label4.TabIndex = 7;
@@ -149,7 +156,8 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(769, 213);
+            textBox1.Anchor = AnchorStyles.Top;
+            textBox1.Location = new Point(797, 213);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(414, 23);
             textBox1.TabIndex = 7;
@@ -157,9 +165,10 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(769, 195);
+            label1.Location = new Point(797, 195);
             label1.Name = "label1";
             label1.Size = new Size(40, 15);
             label1.TabIndex = 8;
@@ -167,9 +176,10 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(769, 256);
+            label2.Location = new Point(797, 256);
             label2.Name = "label2";
             label2.Size = new Size(36, 15);
             label2.TabIndex = 10;
@@ -177,16 +187,18 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(769, 274);
+            textBox2.Anchor = AnchorStyles.Top;
+            textBox2.Location = new Point(797, 274);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(414, 23);
             textBox2.TabIndex = 9;
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(769, 322);
+            label3.Location = new Point(797, 322);
             label3.Name = "label3";
             label3.Size = new Size(55, 15);
             label3.TabIndex = 12;
@@ -194,7 +206,8 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(769, 340);
+            textBox3.Anchor = AnchorStyles.Top;
+            textBox3.Location = new Point(797, 340);
             textBox3.Multiline = true;
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(414, 300);
@@ -212,13 +225,14 @@
             // 
             // button5
             // 
+            button5.Anchor = AnchorStyles.Top;
             button5.BackColor = Color.Crimson;
             button5.Cursor = Cursors.Hand;
             button5.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button5.ForeColor = Color.Transparent;
-            button5.Location = new Point(908, 688);
+            button5.Location = new Point(936, 688);
             button5.Name = "button5";
             button5.Size = new Size(112, 40);
             button5.TabIndex = 13;
@@ -230,6 +244,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(1904, 1011);
             Controls.Add(button5);
             Controls.Add(button1);
@@ -242,7 +258,9 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             Name = "Contact";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Contact";
+            WindowState = FormWindowState.Maximized;
             Load += Contact_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

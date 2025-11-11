@@ -53,9 +53,10 @@
             panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(label5);
-            panel1.Location = new Point(-8, 0);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1936, 90);
+            panel1.Size = new Size(1504, 90);
             panel1.TabIndex = 7;
             // 
             // button4
@@ -73,13 +74,14 @@
             // 
             // button3
             // 
+            button3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button3.BackColor = Color.Crimson;
             button3.Cursor = Cursors.Hand;
             button3.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.Transparent;
-            button3.Location = new Point(1743, 43);
+            button3.Location = new Point(1343, 43);
             button3.Name = "button3";
             button3.Size = new Size(112, 40);
             button3.TabIndex = 12;
@@ -89,12 +91,13 @@
             // 
             // button2
             // 
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button2.Cursor = Cursors.Hand;
             button2.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.Transparent;
-            button2.Location = new Point(1598, 43);
+            button2.Location = new Point(1198, 43);
             button2.Name = "button2";
             button2.Size = new Size(128, 40);
             button2.TabIndex = 10;
@@ -104,10 +107,11 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Top;
             label5.AutoSize = true;
             label5.Font = new Font("Franklin Gothic Heavy", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(831, 18);
+            label5.Location = new Point(631, 18);
             label5.Name = "label5";
             label5.Size = new Size(248, 61);
             label5.TabIndex = 8;
@@ -118,15 +122,17 @@
             panel2.BackColor = Color.Black;
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label4);
-            panel2.Location = new Point(-8, 940);
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(0, 940);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1936, 71);
+            panel2.Size = new Size(1504, 71);
             panel2.TabIndex = 8;
             // 
             // pictureBox2
             // 
+            pictureBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(1802, 18);
+            pictureBox2.Location = new Point(1402, 18);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(62, 39);
             pictureBox2.TabIndex = 10;
@@ -134,10 +140,11 @@
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Bottom;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(919, 29);
+            label4.Location = new Point(719, 29);
             label4.Name = "label4";
             label4.Size = new Size(109, 15);
             label4.TabIndex = 7;
@@ -145,9 +152,10 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(422, 200);
+            label1.Location = new Point(237, 200);
             label1.Name = "label1";
             label1.Size = new Size(1057, 250);
             label1.TabIndex = 9;
@@ -156,9 +164,10 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(839, 144);
+            label2.Location = new Point(654, 144);
             label2.Name = "label2";
             label2.Size = new Size(202, 40);
             label2.TabIndex = 10;
@@ -166,8 +175,9 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Top;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(562, 483);
+            pictureBox1.Location = new Point(377, 483);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(800, 418);
             pictureBox1.TabIndex = 11;
@@ -177,15 +187,18 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1011);
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(1504, 1011);
             Controls.Add(pictureBox1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Name = "About";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "About";
+            WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
