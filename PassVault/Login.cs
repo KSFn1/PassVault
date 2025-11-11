@@ -109,6 +109,10 @@ namespace PassVault
             if (ValidateLogin(inputUsername, password))
             {
 
+                //Reset the username and password
+                inputUsername = null;
+                password = null; 
+
                 //Switch to the landing page
                 Landing newForm = new Landing();
                 newForm.Show();

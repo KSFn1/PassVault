@@ -201,6 +201,10 @@ namespace PassVault
 
             MessageBox.Show("Password reset successful! You can now log in with your new password.");
 
+            //Reset the inputted information
+            newPassword = null;
+            confirmPassword = null;
+
             // Return to login
             Login loginForm = new Login();
             loginForm.Show();

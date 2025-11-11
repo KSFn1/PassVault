@@ -54,6 +54,7 @@ namespace PassVault
             {
                 // Reset the code
                 correctCode = null; 
+
                 //Open the ResetPass page
                 ResetPass newForm = new ResetPass(userEmail);
                 newForm.Show();
@@ -70,7 +71,12 @@ namespace PassVault
 
         private void button1_Click(object sender, EventArgs e)
         {
+            userEmail = null;
+            correctCode = null;
 
+            Login newForm = new Login();
+            newForm.Show();
+            this.Hide();
         }
     }
 }

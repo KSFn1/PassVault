@@ -97,7 +97,7 @@ namespace PassVault
                 //Declare the sender email
                 string senderEmail = "passvaultms@gmail.com";
                 //Provide the password
-                string senderPassword = "jqww mebj igzf mnkw";
+                string senderPassword = "ftky iwmz qabd wcml";
 
                 //Create a new message
                 MailMessage message = new MailMessage();
@@ -164,6 +164,9 @@ namespace PassVault
             //Store the verification code
             verificationCode = GenerateCode();
             SendEmail(email, verificationCode);
+
+            //Reset the input
+            email = null;
 
             //Move to the varify page
             Varify newForm = new Varify(email, verificationCode);
