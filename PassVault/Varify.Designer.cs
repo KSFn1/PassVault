@@ -191,6 +191,7 @@
             Controls.Add(panel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Varify";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Varify";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

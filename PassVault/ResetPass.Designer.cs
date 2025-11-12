@@ -241,6 +241,7 @@
             Controls.Add(panel3);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ResetPass";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ResetPass";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);

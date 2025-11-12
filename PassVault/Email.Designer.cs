@@ -190,6 +190,7 @@
             Controls.Add(panel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Email";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Email";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
