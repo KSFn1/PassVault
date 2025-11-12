@@ -5,12 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json; 
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Net.Http;
 
 namespace PassVault
 {
@@ -18,12 +20,14 @@ namespace PassVault
     {
         //Set the path for the image 
         private readonly string ImagePath = Path.Combine(Application.StartupPath, "images");
+        //Set the path for the database
+        private const string FirebaseUrl = "https://passvault-eccee-default-rtdb.firebaseio.com";
         private string userEmail;
         public ResetPass(string email)
         {
             InitializeComponent();
             //Set the email
-            userEmail = email;
+            userEmail = email.Trim();
         }
 
         //Obtain the user data
@@ -35,6 +39,147 @@ namespace PassVault
             public string Hash { get; set; }
             public int Iterations { get; set; }
             public DateTime CreatedAt { get; set; }
+        }
+
+        //Find the user on the cloud
+        private async Task<UserRecord> GetUserFromCloudAsync(string email)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    //Connect to the database
+                    HttpResponseMessage response = await client.GetAsync($"{FirebaseUrl}/Users.json");
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Failed to connect to Firebase.");
+                        return null;
+                    }
+
+                    string jsonString = await response.Content.ReadAsStringAsync();
+                    if (string.IsNullOrWhiteSpace(jsonString) || jsonString == "null")
+                    {
+                        MessageBox.Show("No users found in Firebase.");
+                        return null;
+                    }
+
+                    using (JsonDocument doc = JsonDocument.Parse(jsonString))
+                    {
+                        foreach (JsonProperty userProperty in doc.RootElement.EnumerateObject())
+                        {
+                            try
+                            {
+                                JsonElement val = userProperty.Value;
+
+                                // Value is a Base64 string (encrypted JSON)
+                                if (val.ValueKind == JsonValueKind.String)
+                                {
+                                    string encryptedBase64 = val.GetString();
+                                    if (string.IsNullOrEmpty(encryptedBase64)) continue;
+
+                                    byte[] encryptedBytes = Convert.FromBase64String(encryptedBase64);
+                                    string decryptedJson = DecryptData(encryptedBytes);
+                                    var user = JsonSerializer.Deserialize<UserRecord>(decryptedJson);
+
+                                    if (user != null && !string.IsNullOrEmpty(user.Email) &&
+                                        user.Email.Trim().Equals(email.Trim(), StringComparison.OrdinalIgnoreCase))
+                                        return user;
+                                }
+
+                                // Value is an object with Data property containing Base64 encrypted JSON
+                                else if (val.ValueKind == JsonValueKind.Object && val.TryGetProperty("Data", out JsonElement dataElem) && dataElem.ValueKind == JsonValueKind.String)
+                                {
+                                    string encryptedBase64 = dataElem.GetString();
+                                    if (string.IsNullOrEmpty(encryptedBase64)) continue;
+
+                                    byte[] encryptedBytes = Convert.FromBase64String(encryptedBase64);
+                                    string decryptedJson = DecryptData(encryptedBytes);
+                                    var user = JsonSerializer.Deserialize<UserRecord>(decryptedJson);
+
+                                    if (user != null && !string.IsNullOrEmpty(user.Email) &&
+                                        user.Email.Trim().Equals(email.Trim(), StringComparison.OrdinalIgnoreCase))
+                                        return user;
+                                }
+
+                                // Value is an object with Email directly in plaintext
+                                else if (val.ValueKind == JsonValueKind.Object && val.TryGetProperty("Email", out JsonElement emailElem))
+                                {
+                                    string firebaseEmail = emailElem.GetString();
+                                    if (!string.IsNullOrEmpty(firebaseEmail) &&
+                                        firebaseEmail.Trim().Equals(email.Trim(), StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        return JsonSerializer.Deserialize<UserRecord>(val.GetRawText());
+                                    }
+                                }
+                            }
+                            catch
+                            {
+                                continue;
+                            }
+                        }
+                    }
+
+                    return null; // user not found
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error fetching user from cloud: {ex.Message}");
+                    return null;
+                }
+            }
+        }
+
+
+        // Update user record in the cloud
+        private async Task<bool> UpdateUserInCloudAsync(string email, UserRecord updatedUser)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage getResponse = await client.GetAsync($"{FirebaseUrl}/Users.json");
+                if (!getResponse.IsSuccessStatusCode) return false;
+
+                string jsonString = await getResponse.Content.ReadAsStringAsync();
+                if (string.IsNullOrWhiteSpace(jsonString) || jsonString == "null") return false;
+
+                using (JsonDocument doc = JsonDocument.Parse(jsonString))
+                {
+                    foreach (JsonProperty userProperty in doc.RootElement.EnumerateObject())
+                    {
+                        try
+                        {
+                            JsonElement val = userProperty.Value;
+
+                            // Object with Data property
+                            if (val.ValueKind == JsonValueKind.Object && val.TryGetProperty("Data", out JsonElement dataElem) && dataElem.ValueKind == JsonValueKind.String)
+                            {
+                                Console.WriteLine("Hello");
+                                string encryptedBase64 = dataElem.GetString();
+                                byte[] bytes = Convert.FromBase64String(encryptedBase64);
+                                string decryptedJson = DecryptData(bytes);
+                                var user = JsonSerializer.Deserialize<UserRecord>(decryptedJson);
+
+                                //Find the email and decrypt it
+                                if (user.Email.Trim().Equals(email.Trim(), StringComparison.OrdinalIgnoreCase))
+                                {
+                                    string updatedJson = JsonSerializer.Serialize(updatedUser);
+                                    byte[] encryptedBytes = ProtectData(updatedJson);
+                                    string updatedBase64 = Convert.ToBase64String(encryptedBytes);
+
+                                    // Update the Data property
+                                    string patchJson = $"{{\"Data\":\"{updatedBase64}\"}}";
+                                    HttpResponseMessage patchResponse = await client.PatchAsync(
+                                        $"{FirebaseUrl}/Users/{userProperty.Name}.json",
+                                        new StringContent(patchJson, Encoding.UTF8, "application/json")
+                                    );
+                                    return patchResponse.IsSuccessStatusCode;
+                                }
+                            }
+                        }
+                        catch { continue; }
+                    }
+                }
+                return false;
+            }
         }
 
         //Generate a new salt
@@ -106,106 +251,58 @@ namespace PassVault
             this.Hide();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
-            //Read the passwords
             string newPassword = textBox1.Text.Trim();
             string confirmPassword = textBox2.Text.Trim();
 
-            //Make sure noth fields are filled out
             if (string.IsNullOrWhiteSpace(newPassword) || string.IsNullOrWhiteSpace(confirmPassword))
             {
                 MessageBox.Show("Please fill in both password fields.");
                 return;
             }
 
-            //Make sure the password matches the criteria
             if (!IsStrongPassword(newPassword))
             {
-                MessageBox.Show("Password must include one upper case, one lower case, one symbol, and one number, and is 8 letters long.");
+                MessageBox.Show("Password must include one upper case, one lower case, one symbol, and one number, and be at least 8 characters long.");
                 return;
             }
 
-
-            //Make sure both passwords match
             if (newPassword != confirmPassword)
             {
                 MessageBox.Show("Passwords don't match.");
                 return;
             }
 
-            //Set the path for the file
-            string path = Path.Combine(Application.StartupPath, "info.txt");
+            // 🔹 Try reading from cloud database first
+            var cloudUser = await GetUserFromCloudAsync(userEmail);
 
-            //Make sure the file exists
-            if (!File.Exists(path))
+            if (cloudUser != null)
             {
-                MessageBox.Show("No user data found.");
-                return;
-            }
+                // Re-hash and update
+                byte[] newSalt = GenerateSalt();
+                byte[] newHash = HashPassword(newPassword, newSalt, 100000);
 
-            //Read all lines
-            string[] lines = File.ReadAllLines(path);
-            List<string> updatedLines = new List<string>();
+                cloudUser.Salt = Convert.ToBase64String(newSalt);
+                cloudUser.Hash = Convert.ToBase64String(newHash);
+                cloudUser.Iterations = 100000;
 
-            bool userFound = false;
-
-            // Go through each line and decrypt
-            foreach (string line in lines)
-            {
-                try
+                bool updated = await UpdateUserInCloudAsync(userEmail, cloudUser);
+                if (updated)
                 {
-                    byte[] encryptedBytes = Convert.FromBase64String(line);
-                    string json = DecryptData(encryptedBytes);
-                    var user = JsonSerializer.Deserialize<UserRecord>(json);
-
-                    // Match email and update password
-                    if (user.Email == userEmail)
-                    {
-                        userFound = true;
-
-                        byte[] newSalt = GenerateSalt();
-                        byte[] newHash = HashPassword(newPassword, newSalt, 100000);
-
-                        user.Salt = Convert.ToBase64String(newSalt);
-                        user.Hash = Convert.ToBase64String(newHash);
-                        user.Iterations = 100000;
-
-                        string updatedJson = JsonSerializer.Serialize(user);
-                        byte[] encrypted = ProtectData(updatedJson);
-                        string encryptedBase64 = Convert.ToBase64String(encrypted);
-
-                        updatedLines.Add(encryptedBase64);
-                    }
-                    else
-                    {
-                        // Keep other user records unchanged
-                        updatedLines.Add(line);
-                    }
+                    MessageBox.Show("Password reset successful!");
                 }
-                catch
+                else
                 {
-                    // Skip unreadable lines safely
-                    updatedLines.Add(line);
+                    MessageBox.Show("Error updating password in cloud database.");
                 }
             }
-
-            if (!userFound)
+            else
             {
-                MessageBox.Show("User not found.");
-                return;
+                MessageBox.Show("User not found in cloud database.");
             }
 
-            // Overwrite the file with updated user list
-            File.WriteAllLines(path, updatedLines);
-
-            MessageBox.Show("Password reset successful! You can now log in with your new password.");
-
-            //Reset the inputted information
-            newPassword = null;
-            confirmPassword = null;
-
-            // Return to login
+            // Go back to login
             Login loginForm = new Login();
             loginForm.Show();
             this.Hide();

@@ -18,7 +18,9 @@ namespace PassVault
 {
     public partial class Email : Form
     {
-        private string verificationCode; 
+        private string verificationCode;
+        private const string FirebaseUrl = "https://passvault-eccee-default-rtdb.firebaseio.com";
+
         public Email()
         {
             InitializeComponent();
@@ -33,6 +35,65 @@ namespace PassVault
             public string Hash { get; set; }
             public int Iterations { get; set; }
             public DateTime CreatedAt { get; set; }
+        }
+
+        private async Task<bool> EmailExistsInCloudAsync(string email)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    // Use capital "Users" if that's how you're storing them (Firebase is case-sensitive)
+                    HttpResponseMessage response = await client.GetAsync($"{FirebaseUrl}/Users.json");
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show($"Failed to connect to Firebase ({response.StatusCode}).");
+                        return false;
+                    }
+
+                    string jsonString = await response.Content.ReadAsStringAsync();
+                    if (string.IsNullOrWhiteSpace(jsonString) || jsonString == "null")
+                        return false;
+
+                    using (JsonDocument doc = JsonDocument.Parse(jsonString))
+                    {
+                        foreach (JsonProperty userProperty in doc.RootElement.EnumerateObject())
+                        {
+                            try
+                            {
+                                JsonElement val = userProperty.Value;
+
+                                
+                                //Value is an object and has Data property -> Data contains Base64 encrypted JSON
+                                if (val.ValueKind == JsonValueKind.Object && val.TryGetProperty("Data", out JsonElement dataElem) && dataElem.ValueKind == JsonValueKind.String)
+                                {
+                                    string encryptedBase64 = dataElem.GetString();
+                                    if (string.IsNullOrEmpty(encryptedBase64)) continue;
+
+                                    byte[] encryptedBytes = Convert.FromBase64String(encryptedBase64);
+                                    string decryptedJson = DecryptData(encryptedBytes);
+                                    var user = JsonSerializer.Deserialize<UserRecord>(decryptedJson);
+                                    if (user != null && !string.IsNullOrEmpty(user.Email) &&
+                                        user.Email.Equals(email, StringComparison.OrdinalIgnoreCase))
+                                        return true;
+                                }
+                            }
+                            catch
+                            {
+                                // ignore malformed entries and continue scanning
+                                continue;
+                            }
+                        }
+                    }
+
+                    return false; // not found
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error checking Firebase: {ex.Message}");
+                    return false;
+                }
+            }
         }
 
         //Decrypt the data
@@ -94,38 +155,32 @@ namespace PassVault
         {
             try
             {
-                //Declare the sender email
+                //Store the username and password of the gmail account
                 string senderEmail = "passvaultms@gmail.com";
-                //Provide the password
                 string senderPassword = "ftky iwmz qabd wcml";
 
-                //Create a new message
-                MailMessage message = new MailMessage();
-
-                //Compose the email
-                message.From = new MailAddress(senderEmail, "PassVault");
+                //Send the actualy email
+                MailMessage message = new MailMessage
+                {
+                    From = new MailAddress(senderEmail, "PassVault"),
+                    Subject = "Your PassVault Code",
+                    Body = $"Your password reset verification code is: {code}\n\nIf you did not request this, please ignore this email."
+                };
                 message.To.Add(recipientEmail);
 
-                //Add the subject line
-                message.Subject = "Your PassVault Code";
+                //Set up the port
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    smtp.Credentials = new NetworkCredential(senderEmail, senderPassword);
+                    smtp.EnableSsl = true;
+                    smtp.Send(message);
+                }
 
-                //Add the body
-                message.Body = $"Your password reset verification code is: {code}\n\nIf you did not request this, please ignore this email.";
-
-                //Declare the port and send
-                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                smtp.Credentials = new NetworkCredential(senderEmail, senderPassword);
-                smtp.EnableSsl = true;
-
-                smtp.Send(message);
                 MessageBox.Show("Verification code sent to your email.");
-
             }
-
-            //Catch an error if any came up
             catch (Exception ex)
             {
-                MessageBox.Show("Error sending email: " + ex.Message); 
+                MessageBox.Show("Error sending email: " + ex.Message);
             }
         }
 
@@ -142,37 +197,32 @@ namespace PassVault
           
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
-            //Read the email
-            string email = textBox1.Text.Trim(); 
+            string email = textBox1.Text.Trim();
 
-            //Make sure the field is not empty
             if (string.IsNullOrWhiteSpace(email))
             {
                 MessageBox.Show("Please enter your email");
-                return; 
-            }
-
-            //Make sure the email exists in the system
-            if (!EmailExists(email))
-            {
-                MessageBox.Show("This email is not registered in the system");
                 return;
             }
 
-            //Store the verification code
+            // 🔹 Check Firebase instead of local file
+            bool exists = await EmailExistsInCloudAsync(email);
+            if (!exists)
+            {
+                MessageBox.Show("This email is not registered in the system.");
+                return;
+            }
+
             verificationCode = GenerateCode();
             SendEmail(email, verificationCode);
 
-            //Reset the input
-            email = null;
+            // Move to verification page
+            Varify verifyForm = new Varify(email, verificationCode);
+            verifyForm.Show();
+            this.Hide();
 
-            //Move to the varify page
-            Varify newForm = new Varify(email, verificationCode);
-            newForm.Show();
-            this.Hide(); 
-           
         }
     }
 }
