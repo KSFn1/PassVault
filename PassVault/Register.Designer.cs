@@ -167,7 +167,7 @@
             button5.Location = new Point(400, 144);
             button5.Name = "button5";
             button5.Size = new Size(20, 20);
-            button5.TabIndex = 15;
+            button5.TabIndex = 3;
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
@@ -188,7 +188,7 @@
             textBox4.Name = "textBox4";
             textBox4.PasswordChar = '*';
             textBox4.Size = new Size(258, 23);
-            textBox4.TabIndex = 11;
+            textBox4.TabIndex = 4;
             textBox4.TextChanged += textBox4_TextChanged;
             // 
             // label7
@@ -208,7 +208,7 @@
             textBox3.Name = "textBox3";
             textBox3.PasswordChar = '*';
             textBox3.Size = new Size(258, 23);
-            textBox3.TabIndex = 9;
+            textBox3.TabIndex = 2;
             textBox3.TextChanged += textBox3_TextChanged;
             // 
             // back
@@ -220,7 +220,7 @@
             back.Location = new Point(237, 292);
             back.Name = "back";
             back.Size = new Size(49, 23);
-            back.TabIndex = 8;
+            back.TabIndex = 6;
             back.Text = "Back";
             back.UseVisualStyleBackColor = true;
             back.Click += button3_Click;
@@ -249,7 +249,7 @@
             textBox2.Location = new Point(136, 82);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(258, 23);
-            textBox2.TabIndex = 3;
+            textBox2.TabIndex = 1;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label1
@@ -268,7 +268,7 @@
             textBox1.Location = new Point(136, 24);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(258, 23);
-            textBox1.TabIndex = 1;
+            textBox1.TabIndex = 0;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button1
@@ -282,7 +282,7 @@
             button1.Location = new Point(212, 243);
             button1.Name = "button1";
             button1.Size = new Size(107, 37);
-            button1.TabIndex = 0;
+            button1.TabIndex = 5;
             button1.Text = "Register";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
@@ -295,6 +295,7 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             Controls.Add(panel3);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Register";
             Text = "Register";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

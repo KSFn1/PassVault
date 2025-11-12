@@ -77,7 +77,7 @@
             button6.Location = new Point(361, 121);
             button6.Name = "button6";
             button6.Size = new Size(75, 23);
-            button6.TabIndex = 12;
+            button6.TabIndex = 2;
             button6.Text = "Delete";
             button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
@@ -93,7 +93,7 @@
             button1.Location = new Point(1449, 94);
             button1.Name = "button1";
             button1.Size = new Size(128, 40);
-            button1.TabIndex = 15;
+            button1.TabIndex = 4;
             button1.Text = "Contact US";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -107,7 +107,7 @@
             button5.Location = new Point(210, 121);
             button5.Name = "button5";
             button5.Size = new Size(75, 23);
-            button5.TabIndex = 11;
+            button5.TabIndex = 1;
             button5.Text = "Edit";
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
@@ -121,7 +121,7 @@
             buttonAdd.Location = new Point(58, 121);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(75, 23);
-            buttonAdd.TabIndex = 10;
+            buttonAdd.TabIndex = 0;
             buttonAdd.Text = "Add";
             buttonAdd.UseVisualStyleBackColor = false;
             buttonAdd.Click += buttonAdd_Click_1;
@@ -144,7 +144,7 @@
             textBox1.Location = new Point(766, 107);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(368, 23);
-            textBox1.TabIndex = 13;
+            textBox1.TabIndex = 3;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button4
@@ -171,7 +171,7 @@
             button3.Location = new Point(1752, 94);
             button3.Name = "button3";
             button3.Size = new Size(112, 40);
-            button3.TabIndex = 12;
+            button3.TabIndex = 6;
             button3.Text = "Logout";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
@@ -187,7 +187,7 @@
             button2.Location = new Point(1608, 94);
             button2.Name = "button2";
             button2.Size = new Size(112, 40);
-            button2.TabIndex = 10;
+            button2.TabIndex = 5;
             button2.Text = "About US";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
@@ -239,6 +239,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = Color.SeaShell;
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
@@ -258,6 +259,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
             Controls.Add(panel2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Landing";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Landing";
