@@ -297,6 +297,7 @@
             Controls.Add(panel3);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Register";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Register";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
