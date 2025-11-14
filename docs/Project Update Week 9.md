@@ -26,6 +26,8 @@ At-a-glance:
 | Overall status | % complete (this week) | Top risk (one line) | Ask for TA/instructor |
 | -------------- | ---------------------- | ------------------- | --------------------- |
 | On track / At risk     | 100%                    | All login related issues and enhancements (Login, register, reset password, encryption, etc.)  | No |
+| On track / At risk     | 100%                    | Dashboard, contact us, and about us pages UI & Functionality  | No |
+| On track / At risk     | 100%                    | Saving all information securely (encryption) onto the cloud  | No |
  
 
  
@@ -36,15 +38,20 @@ What we shipped/completed this week:
 
 - Login Page UI & Functionality 
 
-- Register Page UI & Functionality 
+-  Register Page UI & Functionality 
 
-- Reset password pages (Email sending and verification code sending part as well) UI & Functionality 
+-  Reset password pages (Email sending and verification code sending part as well) UI & Functionality 
 
-- Encryption and saving to a local file 
+- Encryption and saving to the cloud 
+
+- Landing page, contact us, and about us pages UI & functionality 
+
+- Long story short, the entire app is done 
 
 Evidence & Links (paste URLs): 
 
-- [https://www.figma.com/design/psNsHmTIXWHwQsPaF3EgrI/PassVault-Desktop-App-Prototype?node-id=27-4&m=dev&t=XZvEeweqruljVXlh-1](https://www.figma.com/design/psNsHmTIXWHwQsPaF3EgrI/PassVault-Desktop-App-Prototype?node-id=27-4&m=dev&t=XZvEeweqruljVXlh-1)
+- https://www.figma.com/design/psNsHmTIXWHwQsPaF3EgrI/PassVault-Desktop-App-Prototype?node-id=27-4&m=dev&t=XZvEeweqruljVXlh-1  
+
 
 
  
@@ -63,21 +70,23 @@ Challenges & risks (severity, mitigation):
 
 - Making PRs through Visual Studio 
 
+- Saving to the cloud 
+
+- Retrieving information from the cloud 
+
  
 
 Plan for next week (task &rarr; owner &rarr; due date): 
 
-- Landing Page UI & Functionality, Jamshid & Koosha, Nov 11 
-
-- Contact US Page UI & Functionality, Jamshid & Koosha, Nov 11 
-
-- About Us page UI, Jamshid & Koosha, Nov 11 
-
-- Small buttons (Logout, add, modify, delete), Jamshid & Koosha, Nov 11 
-
 - Landing page testing & documentation, Alper & Syed, Nov 13 
 
-- Contact Us/ About us, testing & documentation, Alper & Syed, Nov 13
+- Contact Us/ About us, testing & documentation, Alper & Syed, Nov 13 
+
+- Put all documentations together, ALper & Syed, Nov 16 
+
+- Make a detailed README file, all of us, Nov 21 
+
+- Start working on the presentation, all of us, Nov 28 
  
 
 Submission Block to LMS (paste into LMS) 
