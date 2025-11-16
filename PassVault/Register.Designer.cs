@@ -151,7 +151,7 @@
             button2.Location = new Point(400, 203);
             button2.Name = "button2";
             button2.Size = new Size(20, 20);
-            button2.TabIndex = 16;
+            button2.TabIndex = 4;
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click_1;
             // 
@@ -167,7 +167,7 @@
             button5.Location = new Point(400, 144);
             button5.Name = "button5";
             button5.Size = new Size(20, 20);
-            button5.TabIndex = 3;
+            button5.TabIndex = 7;
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
@@ -188,7 +188,7 @@
             textBox4.Name = "textBox4";
             textBox4.PasswordChar = '*';
             textBox4.Size = new Size(258, 23);
-            textBox4.TabIndex = 4;
+            textBox4.TabIndex = 3;
             textBox4.TextChanged += textBox4_TextChanged;
             // 
             // label7

@@ -98,7 +98,7 @@
             textBox2.Name = "textBox2";
             textBox2.PasswordChar = '*';
             textBox2.Size = new Size(258, 23);
-            textBox2.TabIndex = 2;
+            textBox2.TabIndex = 1;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label1
@@ -181,7 +181,7 @@
             button3.Location = new Point(403, 143);
             button3.Name = "button3";
             button3.Size = new Size(20, 20);
-            button3.TabIndex = 18;
+            button3.TabIndex = 2;
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
@@ -197,7 +197,7 @@
             button5.Location = new Point(403, 84);
             button5.Name = "button5";
             button5.Size = new Size(20, 20);
-            button5.TabIndex = 1;
+            button5.TabIndex = 5;
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 

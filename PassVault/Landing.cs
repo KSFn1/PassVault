@@ -39,9 +39,45 @@ namespace PassVault
             //Make the window full screen
             this.WindowState = FormWindowState.Maximized;
             //Load the data
-            Load += async (s, e) => await LoadCredentials();
+            Load += async (s, e) =>
+            {
+                await LoadCredentials();
+                RefreshTable();
+                SetupGrid();
+            };
             //Make the grid match the available width
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        //Setup the grid 
+        private void SetupGrid()
+        {
+            // Fully readonly
+            dataGridView1.ReadOnly = true;
+
+            // Cannot add/delete
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+
+            // Cannot resize
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+
+            // No multi-select
+            dataGridView1.MultiSelect = false;
+
+            // Row-select only
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            // Removes blue highlight when clicking
+            dataGridView1.DefaultCellStyle.SelectionBackColor = dataGridView1.DefaultCellStyle.BackColor;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = dataGridView1.DefaultCellStyle.ForeColor;
+
+            // Prevent selection display
+            dataGridView1.ClearSelection();
+
+            // Prevent editing via keyboard
+            dataGridView1.Enabled = true; // users can still select rows for Modify/Delete
         }
 
 
