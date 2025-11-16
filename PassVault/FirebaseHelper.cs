@@ -46,8 +46,11 @@ namespace PassVault
         // Load user credentials
         public static async Task<List<string>> LoadUserCredentialsAsync(string username)
         {
-            var data = await client.Child("UserData").Child(username).OnceAsync<string>();
-            return data.Select(d => d.Object).ToList();
+            var result = await client.Child("UserData")
+                                     .Child(username)
+                                     .OnceSingleAsync<List<string>>();
+
+            return result ?? new List<string>();
         }
     }
 }
