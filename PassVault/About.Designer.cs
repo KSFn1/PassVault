@@ -199,7 +199,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "About";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "About";
+            Text = "ABOUT US";
             WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

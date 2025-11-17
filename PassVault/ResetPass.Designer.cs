@@ -242,7 +242,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ResetPass";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ResetPass";
+            Text = "RESET PASSWORD";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
