@@ -264,7 +264,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "LOGIN";
             Load += Login_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
