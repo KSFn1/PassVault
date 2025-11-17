@@ -116,9 +116,9 @@
             label5.ForeColor = Color.White;
             label5.Location = new Point(831, 18);
             label5.Name = "label5";
-            label5.Size = new Size(332, 61);
+            label5.Size = new Size(302, 61);
             label5.TabIndex = 8;
-            label5.Text = "CONCTACT US";
+            label5.Text = "CONTACT US";
             // 
             // panel2
             // 
