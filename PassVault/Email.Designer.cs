@@ -191,7 +191,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Email";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Email";
+            Text = "RESET PASSWORD";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel3.ResumeLayout(false);

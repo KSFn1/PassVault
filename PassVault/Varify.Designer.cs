@@ -192,7 +192,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Varify";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Varify";
+            Text = "RESET PASSWORD";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel3.ResumeLayout(false);

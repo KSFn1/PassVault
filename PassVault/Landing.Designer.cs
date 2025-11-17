@@ -262,7 +262,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Landing";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Landing";
+            Text = "DASHBOARD";
             WindowState = FormWindowState.Maximized;
             Load += Landing_Load_1;
             panel1.ResumeLayout(false);

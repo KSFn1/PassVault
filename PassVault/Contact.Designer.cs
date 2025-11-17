@@ -249,7 +249,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Contact";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Contact";
+            Text = "CONTACT US";
             WindowState = FormWindowState.Maximized;
             Load += Contact_Load;
             panel1.ResumeLayout(false);
