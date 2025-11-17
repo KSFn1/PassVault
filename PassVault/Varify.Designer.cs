@@ -64,9 +64,9 @@
             label5.ForeColor = Color.White;
             label5.Location = new Point(73, 28);
             label5.Name = "label5";
-            label5.Size = new Size(262, 37);
+            label5.Size = new Size(293, 37);
             label5.TabIndex = 8;
-            label5.Text = "Reset Password";
+            label5.Text = "RESET PASSWORD";
             // 
             // panel3
             // 

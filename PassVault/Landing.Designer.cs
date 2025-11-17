@@ -78,7 +78,7 @@
             button6.Name = "button6";
             button6.Size = new Size(75, 23);
             button6.TabIndex = 2;
-            button6.Text = "Delete";
+            button6.Text = "DELETE";
             button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
@@ -94,7 +94,7 @@
             button1.Name = "button1";
             button1.Size = new Size(128, 40);
             button1.TabIndex = 4;
-            button1.Text = "Contact US";
+            button1.Text = "CONTACT US";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -108,7 +108,7 @@
             button5.Name = "button5";
             button5.Size = new Size(75, 23);
             button5.TabIndex = 1;
-            button5.Text = "Edit";
+            button5.Text = "EDIT";
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
@@ -122,7 +122,7 @@
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(75, 23);
             buttonAdd.TabIndex = 0;
-            buttonAdd.Text = "Add";
+            buttonAdd.Text = "ADD";
             buttonAdd.UseVisualStyleBackColor = false;
             buttonAdd.Click += buttonAdd_Click_1;
             // 
@@ -172,7 +172,7 @@
             button3.Name = "button3";
             button3.Size = new Size(112, 40);
             button3.TabIndex = 6;
-            button3.Text = "Logout";
+            button3.Text = "LOGOUT";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
@@ -186,9 +186,9 @@
             button2.ForeColor = Color.Transparent;
             button2.Location = new Point(1608, 94);
             button2.Name = "button2";
-            button2.Size = new Size(112, 40);
+            button2.Size = new Size(116, 40);
             button2.TabIndex = 5;
-            button2.Text = "About US";
+            button2.Text = "ABOUT US";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 

@@ -65,7 +65,7 @@
             button1.Name = "button1";
             button1.Size = new Size(107, 37);
             button1.TabIndex = 3;
-            button1.Text = "Login";
+            button1.Text = "LOGIN";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
@@ -96,9 +96,9 @@
             label5.ForeColor = Color.White;
             label5.Location = new Point(216, 16);
             label5.Name = "label5";
-            label5.Size = new Size(179, 61);
+            label5.Size = new Size(167, 61);
             label5.TabIndex = 8;
-            label5.Text = "LOG IN";
+            label5.Text = "LOGIN";
             label5.Click += label5_Click;
             // 
             // panel2
