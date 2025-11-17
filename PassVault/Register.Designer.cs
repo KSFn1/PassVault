@@ -216,12 +216,13 @@
             back.Cursor = Cursors.Hand;
             back.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
             back.FlatStyle = FlatStyle.Flat;
+            back.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             back.ForeColor = Color.DodgerBlue;
             back.Location = new Point(237, 292);
             back.Name = "back";
             back.Size = new Size(49, 23);
             back.TabIndex = 6;
-            back.Text = "Back";
+            back.Text = "BACK";
             back.UseVisualStyleBackColor = true;
             back.Click += button3_Click;
             // 
@@ -283,7 +284,7 @@
             button1.Name = "button1";
             button1.Size = new Size(107, 37);
             button1.TabIndex = 5;
-            button1.Text = "Register";
+            button1.Text = "REGISTER";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 

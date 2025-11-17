@@ -88,7 +88,7 @@
             button3.Name = "button3";
             button3.Size = new Size(112, 40);
             button3.TabIndex = 12;
-            button3.Text = "Logout";
+            button3.Text = "LOGOUT";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
@@ -102,9 +102,9 @@
             button2.ForeColor = Color.Transparent;
             button2.Location = new Point(1599, 43);
             button2.Name = "button2";
-            button2.Size = new Size(112, 40);
+            button2.Size = new Size(116, 40);
             button2.TabIndex = 10;
-            button2.Text = "About US";
+            button2.Text = "ABOUT US";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 

@@ -55,9 +55,9 @@
             label5.ForeColor = Color.White;
             label5.Location = new Point(73, 28);
             label5.Name = "label5";
-            label5.Size = new Size(262, 37);
+            label5.Size = new Size(293, 37);
             label5.TabIndex = 8;
-            label5.Text = "Reset Password";
+            label5.Text = "RESET PASSWORD";
             // 
             // panel1
             // 
@@ -93,7 +93,7 @@
             button1.Name = "button1";
             button1.Size = new Size(49, 23);
             button1.TabIndex = 2;
-            button1.Text = "Back";
+            button1.Text = "BACK";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -104,11 +104,11 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.DarkOrchid;
-            button2.Location = new Point(192, 98);
+            button2.Location = new Point(183, 98);
             button2.Name = "button2";
-            button2.Size = new Size(80, 47);
+            button2.Size = new Size(89, 47);
             button2.TabIndex = 1;
-            button2.Text = "Send Email";
+            button2.Text = "SEND EMAIL";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
