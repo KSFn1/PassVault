@@ -50,7 +50,7 @@ What we shipped/completed this week:
 
 Evidence & Links (paste URLs): 
 
-- https://www.figma.com/design/psNsHmTIXWHwQsPaF3EgrI/PassVault-Desktop-App-Prototype?node-id=27-4&m=dev&t=XZvEeweqruljVXlh-1  
+- [Link to Figma](https://www.figma.com/design/psNsHmTIXWHwQsPaF3EgrI/PassVault-Desktop-App-Prototype?node-id=27-4&m=dev&t=XZvEeweqruljVXlh-1)
 
 
 
@@ -96,5 +96,6 @@ Submission Block to LMS (paste into LMS)
 - Wiki Home: [https://github.com/KSFn1/PassVault/tree/master/docs/design](https://github.com/KSFn1/PassVault/tree/master/docs/design) 
 
 - This document (uploaded) 
+
 
 - Any notes for TA: None
