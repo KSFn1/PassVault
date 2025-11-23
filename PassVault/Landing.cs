@@ -38,6 +38,8 @@ namespace PassVault
             currentUser = username;
             //Make the window full screen
             this.WindowState = FormWindowState.Maximized;
+
+            label5.Text = $"WELCOME, {currentUser.ToUpper()}";
             //Load the data
             Load += async (s, e) =>
             {
@@ -187,7 +189,7 @@ namespace PassVault
         }
 
         // Modify button
-        private async  void button5_Click(object sender, EventArgs e)
+        private async void button5_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow != null)
             {
@@ -225,7 +227,7 @@ namespace PassVault
                 }
             }
         }
-        
+
         //Helper method to update database
         private Task SaveCredentialsAsync() => FirebaseHelper.SaveUserCredentialsAsync(currentUser, credentials.Select(c =>
             EncryptString($"{c.Platform}|{c.Username}|{c.Password}|{c.Email}|{c.Website}")
@@ -298,6 +300,11 @@ namespace PassVault
             // Update DataGridView with filtered list
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = new BindingList<Credential>(filteredList);
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

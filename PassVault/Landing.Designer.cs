@@ -198,11 +198,11 @@
             label5.AutoSize = true;
             label5.Font = new Font("Franklin Gothic Heavy", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(831, 18);
+            label5.Location = new Point(719, 18);
             label5.Name = "label5";
-            label5.Size = new Size(255, 61);
+            label5.Size = new Size(0, 61);
             label5.TabIndex = 8;
-            label5.Text = "WELCOME";
+            label5.Click += label5_Click;
             // 
             // panel2
             // 
