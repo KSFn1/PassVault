@@ -108,6 +108,7 @@ You will be prompted to update:
 - Website URL
 
 If you intend not to edit all previously entred data, press "OK" to move to the next entry.
+
 Keep in mind that pressing "Cancel" makes the selected entry empty.
 
 ---
@@ -140,5 +141,7 @@ You will receive a response through the email you entered.
 ## **License**
 
 This project was developed for **educational purposes**.
+
 You may **view**, **use**, and **share** this code for learning or non-commercial purposes.
+
 © JAKS CSSD 1161
