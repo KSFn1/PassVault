@@ -1,6 +1,7 @@
 # **PassVault**
 
 A fully functional and secure credential management Windows application that uses advanced encryption to protect user data. It also provides an intuitive, user friendly interface for a seamless experience.
+
 ---
 
 ## **Login Page**
