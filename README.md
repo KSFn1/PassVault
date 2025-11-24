@@ -145,9 +145,10 @@ The red logout button can be used to fully exit the app.
 
 When pressed, a dialogue box with two options appears: "Yes" and "No".
 
-If "Yes" is chosen, the app will fully close all information used during login will get erased. Therefore, when the next session is started, username and password is required again.
+If "Yes" is chosen, the app will fully close and all information used during login will get erased. Therefore, when the next session is started, username and password is required again.
 
 If "No" is chosen, the user will be back where they left off before pressing the "Logout" button.
+
 ---
 
 ## **License**
