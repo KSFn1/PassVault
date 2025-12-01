@@ -60,7 +60,7 @@ namespace PassVault
             dataGridView1.AllowUserToDeleteRows = false;
 
             // Cannot resize
-            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeColumns = true;
             dataGridView1.AllowUserToResizeRows = false;
 
             // No multi-select
@@ -77,7 +77,7 @@ namespace PassVault
             dataGridView1.ClearSelection();
 
             // Prevent editing via keyboard
-            dataGridView1.Enabled = true; // users can still select rows for Modify/Delete
+            dataGridView1.Enabled = true; 
         }
 
 

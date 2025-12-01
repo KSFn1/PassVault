@@ -207,7 +207,7 @@ namespace PassVault
                 return;
             }
 
-            // 🔹 Check Firebase instead of local file
+            // Check Firebase instead of local file
             bool exists = await EmailExistsInCloudAsync(email);
             if (!exists)
             {
